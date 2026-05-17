@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S M Jobaied Alam — QA Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0d1117;
+  --ink2: #1c2333;
+  --muted: #57606a;
+  --border: #d0d7de;
+  --bg: #ffffff;
+  --bg2: #f6f8fa;
+  --bg3: #eef2f7;
+  --accent: #0969da;
+  --accent2: #0550ae;
+  --green: #1a7f37;
+  --green-bg: #dafbe1;
+  --red: #cf222e;
+  --red-bg: #ffebe9;
+  --orange: #953800;
+  --orange-bg: #fff1e5;
+  --teal: #0a6c74;
+  --teal-bg: #e3f8fb;
+  --mono: 'JetBrains Mono', monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* ── NAV ── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+.nav-logo {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 1.5rem; list-style: none; }
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .15s;
+}
+.nav-links a:hover { color: var(--ink); }
+
+/* ── HERO ── */
+.hero {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 80px 2rem 60px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--green);
+  background: var(--green-bg);
+  border: 1px solid #aceebb;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+.hero-badge::before { content: "●"; font-size: 8px; }
+h1.name {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+h1.name em {
+  font-style: italic;
+  color: var(--accent);
+}
+.hero-title {
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+.hero-desc {
+  font-size: 1rem;
+  color: var(--ink2);
+  max-width: 600px;
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all .15s;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: var(--accent);
+  color: white;
+}
+.btn-primary:hover { background: var(--accent2); transform: translateY(-1px); }
+.btn-ghost {
+  background: var(--bg2);
+  color: var(--ink);
+  border: 1px solid var(--border);
+}
+.btn-ghost:hover { background: var(--bg3); transform: translateY(-1px); }
+
+.stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+.stat-num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.8rem;
+  color: var(--ink);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* ── SECTION ── */
+section {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 60px 2rem;
+  border-top: 1px solid var(--border);
+}
+.sec-header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+h2.sec-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.7rem;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+}
+.sec-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── SKILLS ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+}
+.skill-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: all .15s;
+}
+.skill-chip:hover {
+  border-color: var(--accent);
+  background: #f0f6ff;
+  transform: translateY(-1px);
+}
+.skill-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── PROJECTS ── */
+.project-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  transition: box-shadow .2s, transform .2s;
+}
+.project-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.project-header {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.project-header-left h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.2rem;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.project-header-left p {
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.project-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.tag-manual { background: var(--teal-bg); color: var(--teal); border: 1px solid #a8dfe5; }
+.tag-auto { background: var(--green-bg); color: var(--green); border: 1px solid #aceebb; }
+
+.project-body { padding: 20px 24px; background: var(--bg); }
+.project-body p { font-size: 14px; color: var(--ink2); line-height: 1.7; margin-bottom: 16px; }
+
+.deliverables {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.deliverable {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 10px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--ink2);
+}
+.deliverable::before { content: "📄 "; }
+
+.project-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.project-points li {
+  font-size: 13.5px;
+  color: var(--ink2);
+  padding-left: 20px;
+  position: relative;
+  line-height: 1.6;
+}
+.project-points li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.project-footer {
+  padding: 12px 24px;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tech-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+.tech {
+  font-family: var(--mono);
+  font-size: 11px;
+  padding: 3px 8px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--ink2);
+}
+.gh-link {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.gh-link:hover { text-decoration: underline; }
+
+/* ── BUG TABLE ── */
+.table-wrap { overflow-x: auto; margin-bottom: 20px; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+thead tr { background: var(--ink2); }
+thead th {
+  color: white;
+  font-weight: 500;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 12px;
+  font-family: var(--mono);
+  letter-spacing: .03em;
+}
+tbody tr { border-bottom: 1px solid var(--border); transition: background .1s; }
+tbody tr:hover { background: var(--bg2); }
+tbody td { padding: 10px 14px; vertical-align: top; }
+tbody tr:nth-child(even) { background: var(--bg2); }
+tbody tr:nth-child(even):hover { background: var(--bg3); }
+
+.sev {
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: var(--mono);
+  display: inline-block;
+}
+.sev-high { background: var(--red-bg); color: var(--red); }
+.sev-med { background: var(--orange-bg); color: var(--orange); }
+.sev-low { background: var(--green-bg); color: var(--green); }
+
+.result {
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: var(--mono);
+}
+.pass { background: var(--green-bg); color: var(--green); }
+.fail { background: var(--red-bg); color: var(--red); }
+
+/* ── EDUCATION ── */
+.edu-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+.edu-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.edu-body h3 { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+.edu-body p { font-size: 13.5px; color: var(--muted); margin-bottom: 4px; }
+.edu-body span { font-size: 12px; color: var(--muted); font-family: var(--mono); }
+
+/* ── CONTACT ── */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: all .15s;
+}
+.contact-card:hover {
+  border-color: var(--accent);
+  background: #f0f6ff;
+  transform: translateY(-1px);
+}
+.contact-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.contact-body p { font-size: 11px; color: var(--muted); }
+.contact-body strong { font-size: 13px; color: var(--ink); display: block; }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 2rem;
+  text-align: center;
+  font-size: 12.5px;
+  color: var(--muted);
+  font-family: var(--mono);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero > * {
+  animation: fadeUp .5s ease both;
+}
+.hero > *:nth-child(1) { animation-delay: .05s }
+.hero > *:nth-child(2) { animation-delay: .1s }
+.hero > *:nth-child(3) { animation-delay: .15s }
+.hero > *:nth-child(4) { animation-delay: .2s }
+.hero > *:nth-child(5) { animation-delay: .25s }
+.hero > *:nth-child(6) { animation-delay: .3s }
+
+/* ── EDIT GUIDE PANEL ── */
+.edit-guide {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--ink);
+  color: white;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 12px;
+  max-width: 220px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  z-index: 999;
+  line-height: 1.6;
+}
+.edit-guide strong { font-family: var(--mono); color: #79c0ff; display: block; margin-bottom: 4px; }
+.edit-guide-close {
+  position: absolute;
+  top: 8px; right: 10px;
+  background: none; border: none;
+  color: #8b949e; cursor: pointer;
+  font-size: 16px; line-height: 1;
+}
+
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .project-header { flex-direction: column; }
+  .project-footer { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav>
+  <a href="#" class="nav-logo">jobaied.dev</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#bugs">Bug Reports</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<div class="hero">
+  <div class="hero-badge">Available for freelance work</div>
+
+  <!-- ✏️ EDIT: Change your name below -->
+  <h1 class="name">S M Jobaied <em>Alam</em></h1>
+
+  <!-- ✏️ EDIT: Change your title below -->
+  <p class="hero-title">Manual QA Tester · Bug Reporting · API Testing with Postman · Playwright</p>
+
+  <!-- ✏️ EDIT: Change your description below -->
+  <p class="hero-desc">
+    I'm a CSE student who finds bugs before they reach real users. I write clear bug reports,
+    structured test cases, and test APIs with Postman. Currently building automation skills
+    with Playwright. Based in Chattogram, Bangladesh — open to international clients.
+  </p>
+
+  <div class="hero-cta">
+    <a href="https://www.upwork.com/freelancers/~01419910da82fc2525" target="_blank" class="btn btn-primary">
+      💼 Hire me on Upwork
+    </a>
+    <a href="https://github.com/Jasif11" target="_blank" class="btn btn-ghost">
+      🐙 View GitHub
+    </a>
+    <a href="mailto:smjasif00@gmail.com" class="btn btn-ghost">
+      ✉️ Email me
+    </a>
+  </div>
+
+  <!-- ✏️ EDIT: Update these numbers as you grow -->
+  <div class="stat-row">
+    <div class="stat">
+      <span class="stat-num">2</span>
+      <span class="stat-label">Projects completed</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">9+</span>
+      <span class="stat-label">Test scenarios automated</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">$10</span>
+      <span class="stat-label">Hourly rate</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">24hr</span>
+      <span class="stat-label">Response time</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ SKILLS ═══════════ -->
+<section id="skills">
+  <div class="sec-header">
+    <h2 class="sec-title">Skills</h2>
+    <div class="sec-line"></div>
+  </div>
+  <!-- ✏️ EDIT: Add or remove skill chips below -->
+  <div class="skills-grid">
+    <div class="skill-chip"><span class="skill-dot" style="background:#0969da"></span>Manual Testing</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#0969da"></span>Bug Reporting</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#0969da"></span>Test Case Writing</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#0969da"></span>Functional Testing</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#0969da"></span>UI / UX Testing</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#0969da"></span>Regression Testing</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#1a7f37"></span>API Testing</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#1a7f37"></span>Postman</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#1a7f37"></span>Exploratory Testing</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#953800"></span>Playwright (Learning)</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#953800"></span>JavaScript</div>
+    <div class="skill-chip"><span class="skill-dot" style="background:#6e40c9"></span>Jira / Trello</div>
+  </div>
+</section>
+
+<!-- ═══════════ PROJECTS ═══════════ -->
+<section id="projects">
+  <div class="sec-header">
+    <h2 class="sec-title">Projects</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <!-- PROJECT 1 -->
+  <div class="project-card">
+    <div class="project-header">
+      <div class="project-header-left">
+        <!-- ✏️ EDIT: Project title -->
+        <h3>Evershop E-commerce Manual Testing</h3>
+        <p>demo.evershop.io · December 2025 – January 2026</p>
+      </div>
+      <span class="project-tag tag-manual">Manual QA</span>
+    </div>
+    <div class="project-body">
+      <!-- ✏️ EDIT: Project description -->
+      <p>
+        Performed a complete manual testing assessment on the Evershop open-source e-commerce platform.
+        Covered the Search feature from requirements analysis to defect reporting, including API validation
+        with Postman.
+      </p>
+      <ul class="project-points">
+        <li>Prepared 10 priority-based requirement clarification questions for the Search feature</li>
+        <li>Designed structured test cases covering happy path, edge cases, and negative scenarios</li>
+        <li>Executed test cases on the live demo and recorded execution report with pass/fail status</li>
+        <li>Performed end-to-end journey: searched "Nike React" → added to cart → verified via UI and API</li>
+        <li>Logged defects with reproduction steps, expected vs actual behavior, severity, and screenshots</li>
+        <li>Created Postman collection to validate product search, cart operations, and coupon endpoints</li>
+      </ul>
+      <div class="deliverables">
+        <span class="deliverable">Test Cases Document</span>
+        <span class="deliverable">Execution Report</span>
+        <span class="deliverable">Bug Reports</span>
+        <span class="deliverable">Postman Collection</span>
+      </div>
+    </div>
+    <div class="project-footer">
+      <div class="tech-stack">
+        <span class="tech">Postman</span>
+        <span class="tech">Manual Testing</span>
+        <span class="tech">Bug Tracking</span>
+        <span class="tech">REST API</span>
+      </div>
+      <!-- ✏️ EDIT: GitHub link -->
+      <a href="https://github.com/Jasif11/Evershop-manual-testing" target="_blank" class="gh-link">
+        🐙 View on GitHub →
+      </a>
+    </div>
+  </div>
+
+  <!-- PROJECT 2 -->
+  <div class="project-card">
+    <div class="project-header">
+      <div class="project-header-left">
+        <!-- ✏️ EDIT: Project title -->
+        <h3>SauceDemo Playwright Automation Tests</h3>
+        <p>saucedemo.com · May 2026</p>
+      </div>
+      <span class="project-tag tag-auto">Automation</span>
+    </div>
+    <div class="project-body">
+      <!-- ✏️ EDIT: Project description -->
+      <p>
+        Built a Playwright automation test suite for the SauceDemo e-commerce application using JavaScript,
+        with Allure reporting integration. Covered login verification, end-to-end checkout, and performance
+        user scenarios.
+      </p>
+      <ul class="project-points">
+        <li>Automated login error verification for locked_out_user with error message assertion</li>
+        <li>Built standard user E2E checkout flow: login → reset state → add 3 items → checkout → verify totals → logout</li>
+        <li>Covered performance_glitch_user scenario with Z-to-A sort, checkout, and price verification</li>
+        <li>Organized project with /tests and /utils folder structure and clean Playwright config</li>
+        <li>Integrated Allure reporting for visual test results</li>
+      </ul>
+      <div class="deliverables">
+        <span class="deliverable">Playwright Test Suite</span>
+        <span class="deliverable">Allure Report</span>
+        <span class="deliverable">Test Scenarios (3)</span>
+      </div>
+    </div>
+    <div class="project-footer">
+      <div class="tech-stack">
+        <span class="tech">Playwright</span>
+        <span class="tech">JavaScript</span>
+        <span class="tech">Allure</span>
+        <span class="tech">Node.js</span>
+      </div>
+      <!-- ✏️ EDIT: GitHub link -->
+      <a href="https://github.com/Jasif11/saucedemo-playwright-tests" target="_blank" class="gh-link">
+        🐙 View on GitHub →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ BUG REPORTS ═══════════ -->
+<section id="bugs">
+  <div class="sec-header">
+    <h2 class="sec-title">Sample Bug Reports</h2>
+    <div class="sec-line"></div>
+  </div>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:20px">
+    Defects logged during Evershop manual testing — documented with reproduction steps, expected vs actual behavior, and severity classification.
+  </p>
+  <!-- ✏️ EDIT: Add or change bug rows in the table below -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Bug ID</th>
+          <th>Title</th>
+          <th>Steps to Reproduce</th>
+          <th>Severity</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-family:var(--mono);font-size:12px;color:var(--muted)">BUG-001</td>
+          <td>Search results not filtered by category</td>
+          <td style="font-size:12.5px;color:var(--muted)">1. Go to search bar<br>2. Type "shoes" with category filter "Clothing"<br>3. Observe results</td>
+          <td><span class="sev sev-high">High</span></td>
+          <td><span style="font-family:var(--mono);font-size:12px;color:var(--muted)">Open</span></td>
+        </tr>
+        <tr>
+          <td style="font-family:var(--mono);font-size:12px;color:var(--muted)">BUG-002</td>
+          <td>Empty search query returns all products</td>
+          <td style="font-size:12.5px;color:var(--muted)">1. Go to search bar<br>2. Leave empty<br>3. Click search button</td>
+          <td><span class="sev sev-med">Medium</span></td>
+          <td><span style="font-family:var(--mono);font-size:12px;color:var(--muted)">Open</span></td>
+        </tr>
+        <tr>
+          <td style="font-family:var(--mono);font-size:12px;color:var(--muted)">BUG-003</td>
+          <td>Cart total mismatch between UI and API response</td>
+          <td style="font-size:12.5px;color:var(--muted)">1. Add product to cart<br>2. Apply coupon<br>3. Compare UI total vs API cart endpoint</td>
+          <td><span class="sev sev-high">High</span></td>
+          <td><span style="font-family:var(--mono);font-size:12px;color:var(--muted)">Open</span></td>
+        </tr>
+        <tr>
+          <td style="font-family:var(--mono);font-size:12px;color:var(--muted)">BUG-004</td>
+          <td>Search autocomplete missing on mobile viewport</td>
+          <td style="font-size:12.5px;color:var(--muted)">1. Open on 320px viewport<br>2. Click search bar<br>3. Type any keyword</td>
+          <td><span class="sev sev-low">Low</span></td>
+          <td><span style="font-family:var(--mono);font-size:12px;color:var(--muted)">Open</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TEST CASES -->
+  <h3 style="font-family:'DM Serif Display',serif;font-size:1.3rem;margin:32px 0 16px">Sample Test Cases</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>TC ID</th>
+          <th>Test Case</th>
+          <th>Expected Result</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-family:var(--mono);font-size:12px;color:var(--muted)">TC-001</td>
+          <td>Search with valid product name "Nike React"</td>
+          <td style="font-size:13px;color:var(--muted)">Relevant products shown with correct names and images</td>
+          <td><span class="result pass">Pass</span></td>
+        </tr>
+        <tr>
+          <td style="font-family:var(--mono);font-size:12px;color:var(--muted)">TC-002</td>
+          <td>Search with empty input and click search</td>
+          <td style="font-size:13px;color:var(--muted)">Validation message: "Please enter a search term"</td>
+          <td><span class="result fail">Fail</span></td>
+        </tr>
+        <tr>
+          <td style="font-family:var(--mono);font-size:12px;color:var(--muted)">TC-003</td>
+          <td>Add product to cart from search results</td>
+          <td style="font-size:13px;color:var(--muted)">Product added; cart icon count increments by 1</td>
+          <td><span class="result pass">Pass</span></td>
+        </tr>
+        <tr>
+          <td style="font-family:var(--mono);font-size:12px;color:var(--muted)">TC-004</td>
+          <td>Verify cart total via API matches UI total</td>
+          <td style="font-size:13px;color:var(--muted)">API response total matches displayed cart total</td>
+          <td><span class="result fail">Fail</span></td>
+        </tr>
+        <tr>
+          <td style="font-family:var(--mono);font-size:12px;color:var(--muted)">TC-005</td>
+          <td>Search with special characters (!@#$%)</td>
+          <td style="font-size:13px;color:var(--muted)">No products found message; no server error thrown</td>
+          <td><span class="result pass">Pass</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════ EDUCATION ═══════════ -->
+<section id="education">
+  <div class="sec-header">
+    <h2 class="sec-title">Education</h2>
+    <div class="sec-line"></div>
+  </div>
+  <!-- ✏️ EDIT: Change university details below -->
+  <div class="edu-card">
+    <div class="edu-icon">🎓</div>
+    <div class="edu-body">
+      <h3>East Delta University</h3>
+      <p>Bachelor of Science — Computer Science &amp; Engineering</p>
+      <span>2021 – 2025 · Chattogram, Bangladesh</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact">
+  <div class="sec-header">
+    <h2 class="sec-title">Contact</h2>
+    <div class="sec-line"></div>
+  </div>
+  <p style="font-size:14px;color:var(--muted);margin-bottom:20px">
+    Open to manual testing, QA, and bug reporting projects. Response within 24 hours.
+  </p>
+  <!-- ✏️ EDIT: Update links and email below -->
+  <div class="contact-grid">
+    <a href="https://www.upwork.com/freelancers/~01419910da82fc2525" target="_blank" class="contact-card">
+      <div class="contact-icon" style="background:#14a800;font-size:16px">💼</div>
+      <div class="contact-body">
+        <p>Hire me</p>
+        <strong>Upwork Profile</strong>
+      </div>
+    </a>
+    <a href="https://github.com/Jasif11" target="_blank" class="contact-card">
+      <div class="contact-icon" style="background:#24292f;font-size:16px">🐙</div>
+      <div class="contact-body">
+        <p>Code samples</p>
+        <strong>github.com/Jasif11</strong>
+      </div>
+    </a>
+    <a href="https://www.linkedin.com/in/jobaied-" target="_blank" class="contact-card">
+      <div class="contact-icon" style="background:#0a66c2;font-size:16px">💼</div>
+      <div class="contact-body">
+        <p>Connect with me</p>
+        <strong>LinkedIn</strong>
+      </div>
+    </a>
+    <a href="mailto:smjasif00@gmail.com" class="contact-card">
+      <div class="contact-icon" style="background:#ea4335;font-size:16px">✉️</div>
+      <div class="contact-body">
+        <p>Email me directly</p>
+        <strong>smjasif00@gmail.com</strong>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  S M Jobaied Alam · Manual QA Tester · Chattogram, Bangladesh · 2026
+</footer>
+
+<!-- ═══════════ EDIT GUIDE ═══════════ -->
+<div class="edit-guide" id="editGuide">
+  <button class="edit-guide-close" onclick="document.getElementById('editGuide').remove()">×</button>
+  <strong>✏️ How to edit</strong>
+  Open this file in Notepad or VS Code.<br>
+  Find <code style="color:#79c0ff">✏️ EDIT:</code> comments to change text, links, and data.
+</div>
+
+</body>
+</html>
